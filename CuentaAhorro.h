@@ -11,5 +11,6 @@ public:
 	void depositar(double monto);
 	void retirar(double monto);
 	~CuentaAhorro();
+	void to_String();
 };
 

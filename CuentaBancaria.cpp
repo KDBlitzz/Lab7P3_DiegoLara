@@ -51,3 +51,10 @@ void CuentaBancaria::depositar(double monto)
 void CuentaBancaria::retirar(double monto)
 {
 }
+
+void CuentaBancaria::to_String()
+{
+	cout << "Balance: $" << this->balance << endl;
+	cout << "Numero de Cuenta: " << this->numeroDeCuenta << endl;
+	cout << "Nombre: " << this->nombre << endl;
+}

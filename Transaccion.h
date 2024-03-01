@@ -3,7 +3,7 @@
 #include "CuentaBancaria.h"
 #include <string>
 using namespace std;
-template <class T>
+template <typename T>
 class Transaccion
 {
 private:
@@ -11,9 +11,10 @@ private:
 	double monto;
 	string tipo;
 public:
-	Transaccion(T* cuentaBancaria, double monto, string tipo) {
+	Transaccion() {};
+	Transaccion(T* cuentaBancaria, double monto, string tipo)  {
 		this->cuentaBancaria = cuentaBancaria;
-		this->monto = mono;
+		this->monto = monto;
 		this->tipo = tipo;
 	}
 	T* getcuentaBancaria() {
@@ -39,12 +40,13 @@ public:
 		monto = 0.0;
 		tipo = "";
 	}
+	template <typename C>
 	void ejecutarTransaccion() {
 		if (this->gettipo() == "Depositar") {
-			this->cuentaBancaria->depositar(100.0);
+			this->cuentaBancaria<C>->depositar(monto);
 		}
 		else if (this->gettipo() == "Retirar") {
-
+			this->cuentaBancaria<C>->retirar(monto);
 		}
 	}
 };

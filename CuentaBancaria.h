@@ -19,6 +19,6 @@ public:
 	~CuentaBancaria();
 	virtual void depositar(double monto);
 	virtual void retirar(double monto);
-
+	virtual void to_String();
 };
 
