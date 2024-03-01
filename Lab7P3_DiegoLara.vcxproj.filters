@@ -18,5 +18,34 @@
     <ClCompile Include="Lab7P3_DiegoLara.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CuentaBancaria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CuentaAhorro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CuentaCheque.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BancoLCF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CuentaBancaria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CuentaAhorro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CuentaCheque.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaccion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BancoLCF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

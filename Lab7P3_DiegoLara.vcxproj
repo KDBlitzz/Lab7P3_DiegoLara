@@ -127,7 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BancoLCF.cpp" />
+    <ClCompile Include="CuentaAhorro.cpp" />
+    <ClCompile Include="CuentaBancaria.cpp" />
+    <ClCompile Include="CuentaCheque.cpp" />
     <ClCompile Include="Lab7P3_DiegoLara.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BancoLCF.h" />
+    <ClInclude Include="CuentaAhorro.h" />
+    <ClInclude Include="CuentaBancaria.h" />
+    <ClInclude Include="CuentaCheque.h" />
+    <ClInclude Include="Transaccion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
