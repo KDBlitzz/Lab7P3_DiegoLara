@@ -12,11 +12,17 @@ void ejercicio_1() {
 	double sobregiro = 0.0;
 	string nombre = "";
 	double saldo = 0.0;
-	Transaccion<CuentaAhorro>* transaccion = new Transaccion<CuentaAhorro>();
+	bool verificar = false;
+	bool verificarDeposito = false;
+	bool verificarRetiro = false;
+	double cantDeposito = 0.0;
+	double cantRetirar = 0.0;
+	int selecDeposito = 0;
 	vector<CuentaBancaria*> cuentas;
 	BancoLCF* administrador = new BancoLCF(cuentas);
 	bool ejercicio1 = true;
 	int opcion = 0;
+	int eliminar = 0;
 	while (ejercicio1) {
 		cout << "--- Banco LCF ---" << endl;
 		cout << "1. Crear Cuenta" << endl;
@@ -30,9 +36,35 @@ void ejercicio_1() {
 		switch (opcion) {
 		case 1:
 			cout << "Tipo de Cuenta (1: Ahorro, 2: Cheque): "; cin >> selecCuenta;
+			while (selecCuenta < 1 || selecCuenta > 2)
+			{
+				cout << "Elija 1 o 2" << endl;
+				cin >> selecCuenta;
+			}
 			cout << "\nNumero de Cuenta: "; cin >> numeroCuenta;
+			while (numeroCuenta < 1000 || numeroCuenta > 9999) {
+				cout << "Ingrese un numero de cuenta entre 1000 y 9999" << endl;
+				cin >> numeroCuenta;
+			}
+			for (int i = 0; i < administrador->getcuentas().size(); i++)
+			{
+				while (administrador->getcuentas()[i]->getNumeroDeCuenta() == numeroCuenta)
+				{
+					cout << "Ese numero de cuenta ya existe, favor ingrese otro" << endl;
+					cin >> numeroCuenta;
+					break;
+				}
+				while (numeroCuenta < 1000 || numeroCuenta > 9999) {
+					cout << "Ingrese un numero de cuenta entre 1000 y 9999" << endl;
+					cin >> numeroCuenta;
+				}
+			}
 			cout << "\nNombre del Propetario: "; cin >> nombre;
 			cout << "\nSaldo Inicial: "; cin >> saldo;
+			while (saldo < 0 || saldo > 100000) {
+				cout << "Ingrese un saldo entre 0 y 100000" << endl;
+				cin >> saldo;
+			}
 			if (selecCuenta == 1)
 			{
 				cout << "\nTasa de Interes (%): "; cin >> tasa;
@@ -44,31 +76,93 @@ void ejercicio_1() {
 				CuentaAhorro* ahorroNuevo = new CuentaAhorro(saldo, numeroCuenta, nombre, tasa);
 				administrador->agregarCuenta(ahorroNuevo);
 			}
-			else if (selecCuenta == 2){
+			else if (selecCuenta == 2) {
 				cout << "Sobregiro: "; cin >> sobregiro;
-				while (sobregiro < 100 || sobregiro > 350) {
+				while (sobregiro < 100.0 || sobregiro > 350.0) {
 					cout << "Ingrese un sobregiro con un valor entre 100 y 350" << endl;
 					cin >> sobregiro;
 				}
 				cout << endl;
 				CuentaCheque* chequeNuevo = new CuentaCheque(saldo, numeroCuenta, nombre, sobregiro);
+				administrador->agregarCuenta(chequeNuevo);
 			}
 			break;
 		case 2:
-			
+			if (administrador->getcuentas().empty())
+			{
+				cout << "No hay ninguna cuenta" << endl;
+			}
+			else {
+				administrador->mostrarCuentas();
+				cout << "Seleccione el numero de cuenta de la cuenta a la que desea depositar: "; cin >> selecDeposito;
+				for (int i = 0; i < administrador->getcuentas().size(); i++)
+				{
+					if (administrador->getcuentas()[i]->getNumeroDeCuenta() == selecDeposito)
+					{
+						verificarDeposito = true;
+					}
+				}
+
+				if (!verificarDeposito)
+				{
+					cout << "Esa cuenta no existe" << endl;
+					break;
+				}
+				else {
+					cout << "Cantidad a depositar: "; cin >> cantDeposito;
+					while (cantDeposito < 0) {
+						cout << "Ingrese un numero mayor a 0" << endl;
+						cin >> cantDeposito;
+					}
+					cout << endl;
+					Transaccion<CuentaBancaria>* transaccion = new Transaccion<CuentaBancaria>();
+					transaccion->ejecutarTransaccion();
+				}
+			}
 			break;
 		case 3:
-
+			if (administrador->getcuentas().empty())
+			{
+				cout << "No hay ninguna cuenta" << endl;
+			}
+			else {
+				administrador->mostrarCuentas();
+			}
 			break;
 		case 4:
 			administrador->mostrarCuentas();
 			break;
 		case 5:
-			
+			if (administrador->getcuentas().empty())
+			{
+				cout << "No hay ninguna cuenta" << endl;
+			}
+			else {
+				administrador->mostrarCuentas();
+				cout << "Seleccione el numero de cuenta de la cuenta que desea eliminar: "; cin >> eliminar;
+				for (int i = 0; i < administrador->getcuentas().size(); i++)
+				{
+					if (administrador->getcuentas()[i]->getNumeroDeCuenta() == eliminar)
+					{
+						verificar = true;
+					}
+				}
+
+				if (!verificar)
+				{
+					cout << "Esa cuenta no existe" << endl;
+					break;
+				}
+				else {
+					administrador->eliminarCuenta(eliminar);
+				}
+			}
 			break;
 		case 6:
 			ejercicio1 = false;
 			break;
+		default:
+			cout << "Opcion Invalida" << endl;
 		}
 	}
 }

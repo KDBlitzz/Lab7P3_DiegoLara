@@ -12,7 +12,7 @@ private:
 	string tipo;
 public:
 	Transaccion() {};
-	Transaccion(T* cuentaBancaria, double monto, string tipo)  {
+	Transaccion(T* cuentaBancaria, double monto, string tipo) : CuentaBancaria(cuentaBancaria, setmonto(monto), settipo(tipo)) {
 		this->cuentaBancaria = cuentaBancaria;
 		this->monto = monto;
 		this->tipo = tipo;
@@ -40,13 +40,13 @@ public:
 		monto = 0.0;
 		tipo = "";
 	}
-	template <typename C>
+	
 	void ejecutarTransaccion() {
 		if (this->gettipo() == "Depositar") {
-			this->cuentaBancaria<C>->depositar(monto);
+			cuentaBancaria->depositar(monto);
 		}
 		else if (this->gettipo() == "Retirar") {
-			this->cuentaBancaria<C>->retirar(monto);
+			cuentaBancaria->retirar(monto);
 		}
 	}
 };

@@ -38,6 +38,7 @@ void BancoLCF::eliminarCuenta(int numCuenta)
 			cuentas.erase(cuentas.begin() + i);
 		}
 	}
+
 }
 
 void BancoLCF::mostrarCuentas()
@@ -49,7 +50,7 @@ void BancoLCF::mostrarCuentas()
 	else {
 		int contador = 1;
 		for (int i = 0; i < this->cuentas.size(); i++) {
-			cout << "Helicoptero: " << contador << endl;
+			cout << "Cuenta: " << contador << endl;
 			this->cuentas[i]->to_String();
 			cout << endl;
 			contador++;

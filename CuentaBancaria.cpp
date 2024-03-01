@@ -1,5 +1,9 @@
 #include "CuentaBancaria.h"
 
+CuentaBancaria::CuentaBancaria()
+{
+}
+
 CuentaBancaria::CuentaBancaria(double balance, int numeroDeCuenta, string nombre)
 {
 	this->balance = balance;

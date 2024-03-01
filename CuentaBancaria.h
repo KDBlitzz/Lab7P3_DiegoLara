@@ -9,6 +9,7 @@ private:
 	int numeroDeCuenta;
 	string nombre;
 public:
+	CuentaBancaria();
 	CuentaBancaria(double balance, int numeroDeCuenta, string nombre);
 	double getBalance();
 	int getNumeroDeCuenta();
