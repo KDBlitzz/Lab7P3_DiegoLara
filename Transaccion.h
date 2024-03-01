@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
+#include "CuentaBancaria.h"
 #include <string>
 using namespace std;
-template <typename T>
+template <class T>
 class Transaccion
 {
 private:
@@ -39,7 +40,12 @@ public:
 		tipo = "";
 	}
 	void ejecutarTransaccion() {
+		if (this->gettipo() == "Depositar") {
+			this->cuentaBancaria->depositar(100.0);
+		}
+		else if (this->gettipo() == "Retirar") {
 
+		}
 	}
 };
 
