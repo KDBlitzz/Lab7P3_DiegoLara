@@ -43,9 +43,9 @@ void CuentaBancaria::setNombre(string nombre)
 
 CuentaBancaria::~CuentaBancaria()
 {
-	balance = 0.0;
+	/*balance = 0.0;
 	numeroDeCuenta = 0;
-	nombre = "";
+	nombre = "";*/
 }
 
 void CuentaBancaria::depositar(double monto)

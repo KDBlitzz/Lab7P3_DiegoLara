@@ -17,7 +17,7 @@ void BancoLCF::setcuentas(vector<CuentaBancaria*> cuentas)
 
 BancoLCF::~BancoLCF()
 {
-	for (int i = 0; i < cuentas.size(); i++)
+	for (int i = 0; i < cuentas.size(); i++) // borrar memoria
 	{
 		delete this->cuentas[i];
 	}
@@ -26,7 +26,7 @@ BancoLCF::~BancoLCF()
 
 void BancoLCF::agregarCuenta(CuentaBancaria* cuenta)
 {
-	this->cuentas.push_back(cuenta);
+	this->cuentas.push_back(cuenta); 
 }
 
 void BancoLCF::eliminarCuenta(int numCuenta)
@@ -35,7 +35,7 @@ void BancoLCF::eliminarCuenta(int numCuenta)
 	{
 		if (cuentas[i]->getNumeroDeCuenta() == numCuenta)
 		{
-			cuentas.erase(cuentas.begin() + i);
+			cuentas.erase(cuentas.begin() + i); // eliminar la cuenta
 		}
 	}
 
@@ -43,7 +43,7 @@ void BancoLCF::eliminarCuenta(int numCuenta)
 
 void BancoLCF::mostrarCuentas()
 {
-	if (this->cuentas.empty())
+	if (this->cuentas.empty())// validacion
 	{
 		cout << "No hay ninguna cuenta" << endl;
 	}
@@ -51,7 +51,7 @@ void BancoLCF::mostrarCuentas()
 		int contador = 1;
 		for (int i = 0; i < this->cuentas.size(); i++) {
 			cout << "Cuenta: " << contador << endl;
-			this->cuentas[i]->to_String();
+			this->cuentas[i]->to_String(); // mostrar las cuentas
 			cout << endl;
 			contador++;
 		}

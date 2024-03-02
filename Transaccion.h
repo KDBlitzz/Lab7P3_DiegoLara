@@ -12,7 +12,7 @@ private:
 	string tipo;
 public:
 	Transaccion() {};
-	Transaccion(T* cuentaBancaria, double monto, string tipo) : CuentaBancaria(cuentaBancaria, setmonto(monto), settipo(tipo)) {
+	Transaccion(T* cuentaBancaria, double monto, string tipo) {
 		this->cuentaBancaria = cuentaBancaria;
 		this->monto = monto;
 		this->tipo = tipo;
@@ -37,8 +37,8 @@ public:
 	}
 	~Transaccion() {
 		delete cuentaBancaria;
-		monto = 0.0;
-		tipo = "";
+		//monto = 0.0;
+		//tipo = "";
 	}
 	
 	void ejecutarTransaccion() {

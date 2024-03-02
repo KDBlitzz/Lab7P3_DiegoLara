@@ -1,5 +1,9 @@
 #include "CuentaCheque.h"
 
+CuentaCheque::CuentaCheque()
+{
+}
+
 CuentaCheque::CuentaCheque(double balance, int numeroDeCuenta, string nombre, double sobregiro)
 	: CuentaBancaria(balance, numeroDeCuenta, nombre)
 {
@@ -19,8 +23,8 @@ void CuentaCheque::setsobregiro(double sobregiro)
 
 void CuentaCheque::depositar(double monto)
 {
-	this->setBalance(this->getBalance() + monto);
-	if (confirmarSobreGiro)
+	this->setBalance(this->getBalance() + monto); // depositar
+	if (confirmarSobreGiro) // si tiene tarifa, se le resta al balance agregado
 	{
 		this->setBalance(this->getBalance() - sobregiro);
 		cout << "Tarifa por sobregiro de " << sobregiro << " aplicado." << endl;
@@ -31,8 +35,8 @@ void CuentaCheque::depositar(double monto)
 
 void CuentaCheque::retirar(double monto)
 {
-	this->setBalance(this->getBalance() - monto);
-	if (this->getBalance() < monto)
+	this->setBalance(this->getBalance() - monto); // retirar
+	if (this->getBalance() < monto) // validar si tiene tarifa o no
 	{
 		confirmarSobreGiro = true;
 		cout << "Retiro realizado correctamente con tarifa." << endl;
@@ -45,7 +49,7 @@ void CuentaCheque::retirar(double monto)
 
 CuentaCheque::~CuentaCheque()
 {
-	sobregiro = 0.0;
+	//sobregiro = 0.0;
 }
 
 void CuentaCheque::to_String()
